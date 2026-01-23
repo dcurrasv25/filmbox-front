@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="40dp"
     android:background="@android:color/white"
+    android:padding="40dp"
     tools:context=".MainActivity">
 
-    <!-- Header with Title and Icon -->
     <LinearLayout
         android:id="@+id/filmbox_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="60dp"
         android:gravity="center_vertical"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filmbox"
-            android:textSize="48sp"
+            android:text="FilmBox"
             android:textColor="@android:color/black"
+            android:textSize="48sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -35,112 +33,115 @@
             android:layout_height="52dp"
             android:layout_marginStart="16dp"
             android:src="@drawable/ic_filmbox_icon"
-            app:tint="@android:color/black"
-            android:contentDescription="@string/filmbox_icon_desc" />
+            app:tint="@android:color/black" />
     </LinearLayout>
 
-    <!-- Name Section -->
     <TextView
         android:id="@+id/name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nombre_label"
-        android:textSize="20sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="56dp"
+        android:text="Nombre:"
         android:textColor="@android:color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:labelFor="@+id/name_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filmbox_header"
-        android:layout_marginTop="60dp" />
+        app:layout_constraintTop_toBottomOf="@+id/filmbox_header" />
 
     <EditText
         android:id="@+id/name_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="40dp"
         android:background="@null"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="@android:color/black"
-        android:paddingBottom="4dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:minHeight="40dp"
+        android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_label"
-        android:autofillHints="name" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_label" />
 
     <View
         android:id="@+id/name_line"
         android:layout_width="0dp"
         android:layout_height="1.5dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:background="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_input" />
-
-    <!-- Password Section -->
     <TextView
         android:id="@+id/password_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/contrasena_label"
-        android:textSize="20sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
+        android:text="Contraseña:"
         android:textColor="@android:color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:labelFor="@+id/password_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_line"
-        android:layout_marginTop="45dp" />
+        app:layout_constraintTop_toBottomOf="@+id/name_line" />
 
     <EditText
         android:id="@+id/password_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="40dp"
         android:background="@null"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textColor="@android:color/black"
-        android:paddingBottom="4dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:minHeight="40dp"
+        android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_label"
-        android:autofillHints="password" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_label" />
 
     <View
         android:id="@+id/password_line"
         android:layout_width="0dp"
         android:layout_height="1.5dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:background="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_input" />
-
-    <!-- Bottom Text and Button -->
-    <TextView
-        android:id="@+id/no_account_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/no_account_text"
-        android:textSize="19sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/register_button"
-        android:layout_marginBottom="28dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/register_button"
         android:layout_width="260dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="60dp"
-        android:text="@string/register_button_text"
+        android:layout_marginTop="60dp"
+        android:text="Registrarse"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:backgroundTint="@android:color/black"
         app:cornerRadius="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_line" />
+
+    <TextView
+        android:id="@+id/has_account_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="¿Ya tienes cuenta?"
+        android:textColor="@android:color/black"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_button" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
