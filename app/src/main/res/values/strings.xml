@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">filmbox-front</string>
+    <string name="filmbox">FilmBox</string>
+    <string name="nombre_label">Nombre:</string>
+    <string name="contrasena_label">Contraseña:</string>
+    <string name="no_account_text">Aún no tienes cuenta?</string>
+    <string name="register_button_text">Registrarse</string>
+    <string name="filmbox_icon_desc">FilmBox Icon</string>
 </resources>

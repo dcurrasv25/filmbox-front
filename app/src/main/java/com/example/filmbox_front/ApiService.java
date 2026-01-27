@@ -1,7 +1,10 @@
 package com.example.filmbox_front;
 
-import java.util.List;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
+import java.util.List;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 
@@ -15,5 +18,9 @@ public interface ApiService {
 
     @GET("wishlist/")
     Call<List<FilmResponse>> getWishlist(@Header("Authorization") String token);
+
+    @POST("register")
+    Call<RegisterResponse> registerUser(@Body UserRegistration user);
 }
+
 
