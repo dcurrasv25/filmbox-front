@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Aquí podrías obtener estos valores desde login o SharedPreferences
+    private String sessionToken = "TU_TOKEN_DE_PRUEBA";
+    private String username = "UsuarioPrueba";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +51,21 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             } else if (item.getItemId() == R.id.nav_profile) {
+                // Pasar token y username al ProfileFragment
+                Bundle args = new Bundle();
+                args.putString("SESSION_TOKEN", sessionToken);
+                args.putString("USERNAME", username);
+
+                ProfileFragment profileFragment = new ProfileFragment();
+                profileFragment.setArguments(args);
+
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new ProfileFragment())
+                        .replace(R.id.fragment_container, profileFragment)
                         .commit();
                 return true;
             }
             return false;
         });
     }
-
 }
+
