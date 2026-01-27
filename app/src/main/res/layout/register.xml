@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:padding="40dp"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
 
     <LinearLayout
         android:id="@+id/filmbox_header"
