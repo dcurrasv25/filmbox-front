@@ -37,6 +37,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"/>
+
+        <!-- Detalle de Película -->
+        <activity
+            android:name=".MovieDetailActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
