@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="18dp"
+    android:paddingStart="0dp"
     android:background="#FAFAFA">
 
     <TextView
@@ -13,9 +13,11 @@
         android:layout_height="wrap_content"
         android:text="Buscar"
         android:textColor="#000000"
-        android:textSize="40sp"
+        android:textSize="33sp"
         android:fontFamily="@font/inter_bold"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -23,13 +25,15 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/searchBox"
         android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="48dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="2dp"
         app:strokeColor="#B8A0A0"
         app:strokeWidth="2dp"
         app:cardBackgroundColor="#FFFFFF"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
         app:layout_constraintTop_toBottomOf="@id/tvBuscar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -43,15 +47,22 @@
             android:paddingEnd="14dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:id="@+id/ivSearchIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/ic_search_small"
                 android:tint="#B8A0A0"/>
 
             <EditText
+                android:id="@+id/etSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:inputType="text"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
                 android:hint="Películas, perfiles, etc"
                 android:textColor="#000000"
                 android:textColorHint="#939393"
@@ -61,30 +72,118 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Explorar todo -->
+    <!-- CHIPS (modo resultados) -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:visibility="gone"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        app:layout_constraintTop_toBottomOf="@id/searchBox"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMovies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Filmbox.SearchChip"
+            android:text="Películas"
+            android:fontFamily="@font/inter_bold"
+            android:textStyle="bold"
+            android:checked="true"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipUsers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Filmbox.SearchChip"
+            android:text="Usuarios"
+            android:fontFamily="@font/inter_bold"
+            android:textStyle="bold"/>
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/dividerSearchExplorar"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#E6E6E6"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/chipGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Recientes -->
+    <TextView
+        android:id="@+id/tvRecientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recientes"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:fontFamily="@font/inter_bold"
+        android:visibility="gone"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="18dp"
+        app:layout_constraintTop_toBottomOf="@id/searchBox"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecientes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintTop_toBottomOf="@id/tvRecientes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Explorar -->
     <TextView
         android:id="@+id/tvExplorar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Explorar todo"
         android:textColor="#000000"
-        android:textSize="32sp"
+        android:textSize="24sp"
         android:fontFamily="@font/inter_bold"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@id/searchBox"
+        android:layout_marginTop="21dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintTop_toBottomOf="@id/dividerSearchExplorar"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Grid de categorías -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategories"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="13dp"
         app:layout_constraintTop_toBottomOf="@id/tvExplorar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Resultados -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvResults"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/dividerSearchExplorar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

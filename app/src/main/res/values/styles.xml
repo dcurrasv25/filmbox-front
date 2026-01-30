@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Shape.Filmbox.Pill" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
+    </style>
+
+    <style name="TextAppearance.Filmbox.Chip" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+
+    </style>
+
+    <style name="Widget.Filmbox.SearchChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="shapeAppearance">@style/Shape.Filmbox.Pill</item>
+
+        <item name="chipBackgroundColor">@color/search_chip_bg</item>
+
+        <item name="chipStrokeColor">@color/search_chip_stroke</item>
+        <item name="chipStrokeWidth">2.5dp</item>
+
+        <!-- ESTA ES LA CLAVE -->
+        <item name="android:textAppearance">@style/TextAppearance.Filmbox.Chip</item>
+
+        <item name="android:textColor">@color/search_chip_text</item>
+
+        <item name="checkedIconVisible">false</item>
+        <item name="closeIconVisible">false</item>
+        <item name="rippleColor">@android:color/transparent</item>
+    </style>
+
+</resources>

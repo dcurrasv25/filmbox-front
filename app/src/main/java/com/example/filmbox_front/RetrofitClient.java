@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     // Emulador:
-    private static final String BASE_URL = "http://10.178.135.48:8000/";
+    private static final String BASE_URL = "http://10.116.5.48:8000/";
 
     private static Retrofit retrofit;
 
