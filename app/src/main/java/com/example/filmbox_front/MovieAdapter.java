@@ -1,6 +1,8 @@
 package com.example.filmbox_front;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +40,26 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+        if (position < 0 || position >= movieImages.size()) return;
         String url = movieImages.get(position);
-        Picasso.get().load(url).into(holder.imageView);
-        holder.itemView.setOnClickListener(v -> listener.onMovieClick(position));
+        if (url != null && !url.isEmpty()) {
+            Picasso.get()
+                    .load(url)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .fit()
+                    .centerCrop()
+                    .into(holder.imageView);
+        } else {
+            holder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+        }
+        if (listener != null) {
+            holder.itemView.setOnClickListener(v -> listener.onMovieClick(position));
+        }
     }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -53,8 +71,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.movie_image);
+            imageView = itemView.findViewById(R.id.imgPosterGrid);
         }
     }
+
+    public void updateData(List<String> newImages) {
+        this.movieImages.clear();
+        if (newImages != null) {
+            this.movieImages.addAll(newImages);
+        }
+        notifyDataSetChanged();
+    }
+
 }
+
+
 

@@ -1,5 +1,7 @@
 package com.example.filmbox_front;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,14 +13,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Aquí podrías obtener estos valores desde login o SharedPreferences
-    private String sessionToken = "TU_TOKEN_DE_PRUEBA";
-    private String username = "UsuarioPrueba";
+    private static final String PREFS_NAME = "FilmBoxPrefs";
+    private static final String TOKEN_KEY = "SESSION_TOKEN";
+    private static final String USERNAME_KEY = "USERNAME";
+
+    private String sessionToken = "";
+    private String username = "Usuario";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Token y usuario guardados en el login (misma clave que LoginActivity)
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        sessionToken = prefs.getString(TOKEN_KEY, "");
+        username = prefs.getString(USERNAME_KEY, "Usuario");
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
 

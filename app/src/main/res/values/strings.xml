@@ -8,4 +8,6 @@
     <string name="no_account_text">Aún no tienes cuenta?</string>
     <string name="register_button_text">Registrarse</string>
     <string name="filmbox_icon_desc">FilmBox Icon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

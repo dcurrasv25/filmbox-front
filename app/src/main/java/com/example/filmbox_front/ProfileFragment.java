@@ -40,13 +40,7 @@ public class ProfileFragment extends Fragment {
             username = getArguments().getString("USERNAME", "Usuario");
         }
 
-        // Inicializar Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8000/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        api = retrofit.create(ApiService.class);
+        api = RetrofitClient.getApiService();
 
         // Foto de perfil predeterminada
         ImageView profileImage = view.findViewById(R.id.profile_image);
@@ -61,6 +55,54 @@ public class ProfileFragment extends Fragment {
             loadWatchedMovies(view);
             loadFavoriteMovies(view);
             loadWishlistMovies(view);
+
+            ImageView watchedArrow = view.findViewById(R.id.watched_arrow);
+            watchedArrow.setOnClickListener(v -> {
+                WatchedFragment fragment = new WatchedFragment();
+                Bundle args = new Bundle();
+                args.putString("SESSION_TOKEN", sessionToken);
+                fragment.setArguments(args);
+
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            });
+
+            ImageView favoritesArrow = view.findViewById(R.id.favorites_arrow);
+
+            favoritesArrow.setOnClickListener(v -> {
+                FavoritesFragment fragment = new FavoritesFragment();
+
+                Bundle args = new Bundle();
+                args.putString("SESSION_TOKEN", sessionToken);
+                fragment.setArguments(args);
+
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            });
+
+            ImageView wishlistArrow = view.findViewById(R.id.wishlist_arrow);
+
+            wishlistArrow.setOnClickListener(v -> {
+                WishlistFragment fragment = new WishlistFragment();
+
+                Bundle args = new Bundle();
+                args.putString("SESSION_TOKEN", sessionToken);
+                fragment.setArguments(args);
+
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            });
+
+
         }
     }
 

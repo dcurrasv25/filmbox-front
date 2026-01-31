@@ -10,14 +10,15 @@ import retrofit2.http.Header;
 
 public interface ApiService {
 
-    @GET("watched/")
-    Call<List<FilmResponse>> getWatched(@Header("Authorization") String token);
+    @GET("watched")
+    Call<List<FilmResponse>> getWatched(@Header("Authorization") String authHeader);
 
-    @GET("favorites/")
-    Call<List<FilmResponse>> getFavorites(@Header("Authorization") String token);
+    @GET("favorites")
+    Call<List<FilmResponse>> getFavorites(@Header("Authorization") String authHeader);
 
-    @GET("wishlist/")
-    Call<List<FilmResponse>> getWishlist(@Header("Authorization") String token);
+    @GET("wishlist")
+    Call<List<FilmResponse>> getWishlist(@Header("Authorization") String authHeader);
+
 
     @POST("register")
     Call<RegisterResponse> registerUser(@Body UserRegistration user);
